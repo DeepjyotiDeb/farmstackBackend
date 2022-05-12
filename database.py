@@ -1,3 +1,4 @@
+from typing import Collection
 from model import Todo
 
 # mongo db driver
@@ -37,5 +38,4 @@ async def update_todo(title, desc):
 
 async def delete_todo(title):
     await collection.delete_one({"title": title})
-    # return (collection, True)
     return True

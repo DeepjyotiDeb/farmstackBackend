@@ -46,8 +46,8 @@ async def put_todo(title:str, desc:str):
     raise HTTPException(404, f"no todo with title {title}")
 
 @app.delete("/api/todo/{title}")
-async def delete_todo(title):
+async def delete_todo(title:str):
     response = await database.delete_todo(title)
     if response:
-        return  (f"successfully deleted item {title}", response, title)
-    raise HTTPException(404, f"no todo witht title {title}")
+        return  (f"successfully deleted item {title}", response)
+    raise HTTPException(404, f"no todo with title {title}") #may not be able to selectively delete
